@@ -1,6 +1,6 @@
 # leadspace
 Test for interview in leadspace<br>
-
+For that project, I have used the Spring framework<br>
 To run the application run the class com.leadspace.addressresolver.ResoleverApp as Java application<br>
 By default it will run on port 8080 but you can specified a port in application parameter or if running from console in the CLI, just need to spcified a port number.<br>
 Rest API:<br>
