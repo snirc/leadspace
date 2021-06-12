@@ -12,7 +12,6 @@ Examole of bofy row:<br>
 	"state": "Île-de-France",<br>
 	"postalCode": "75002", <br>
 	"street": "5 Rue Daunou"<br>
-	
 }<br>
 <br>
 Response: <br>
