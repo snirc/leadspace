@@ -1,5 +1,10 @@
 package com.leadspace.addressresolver.pojo;
 
+/**
+ * 
+ * @author sncohen
+ *
+ */
 public class Address {
 	private String country;
 	private String state;

@@ -16,7 +16,7 @@ import com.leadspace.addressresolver.pojo.Resolve;
 import com.leadspace.addressresolver.services.AddressValidatorService;
 
 /**
- * 
+ * That class is a collection of the application rest API 
  * @author sncohen
  *
  */
@@ -31,6 +31,12 @@ public class ResolverController {
 	    }
 	    
 
+	 /**
+	  * Rest API for validating an specified address 
+	  * @param address
+	  * @return
+	  * @throws Exception
+	  */
 	    @PostMapping(value = "/address/resolv", produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody
 	    public Resolve resolvAddress(@RequestBody Address address) throws Exception  {

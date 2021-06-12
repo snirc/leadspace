@@ -1,5 +1,10 @@
 package com.leadspace.addressresolver.pojo;
 
+/**
+ * 
+ * @author sncohen
+ *
+ */
 public class Resolve {
 	private String normalized;
 	private String status;

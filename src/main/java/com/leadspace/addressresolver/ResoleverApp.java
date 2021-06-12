@@ -1,10 +1,8 @@
 package com.leadspace.addressresolver;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties.Web.Server;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -13,7 +11,7 @@ public class ResoleverApp {
 	
 
 	public static void main(String[] args) {
-		
+		//Running the server with the specified port 
 		
 		String port = args[0] == null ? DefaultParas.PORT : args[0]; 
 		

@@ -45,7 +45,7 @@ public class AddressValidatorService {
 	}
 
 	/**
-	 * 
+	 * validate the object of the Response Items from the entire response Jsom
 	 * @param responseObject
 	 * @return
 	 */
@@ -70,7 +70,7 @@ public class AddressValidatorService {
 				else if ((addressObj.has("houseNumber") && addressObj.has("label")) &&
 						 (StringUtils.isNotBlank(addressObj.getString("houseNumber"))) && 
 						 (StringUtils.isNotBlank(addressObj.getString("label")))) {
-
+						// a Valid state 
 					resolve.setStatus(DefaultParas.Valid);
 					resolve.setNormalized(addressObj.getString("label"));
 					resolve.setHereUsage(1);
@@ -86,7 +86,7 @@ public class AddressValidatorService {
 	}
 
 	/**
-	 * 
+	 * Validate if all the fields that came from the client are not empty 
 	 * @param address
 	 * @return
 	 */
@@ -101,8 +101,8 @@ public class AddressValidatorService {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Sending a Rest request to  geocode and return the body as Json
+	 * @return response body as json
 	 * @throws Exception
 	 */
 	public JSONObject getAddressInformationFromGeocode(Address address) throws Exception {
