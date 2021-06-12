@@ -2,7 +2,7 @@
 Test for interview in leadspace<br>
 
 To run the application run the class com.leadspace.addressresolver.ResoleverApp as Java applicatio<br>
-By defaulet it will run on port 8080 but you can specified a port in application parameter or if running from consule in the CLI, just need to spcified a port number.<br>
+By default it will run on port 8080 but you can specified a port in application parameter or if running from console in the CLI, just need to spcified a port number.<br>
 Rest API:<br>
 POST localhost:8083/address/resolv<br>
 Examole of bofy row:<br>
