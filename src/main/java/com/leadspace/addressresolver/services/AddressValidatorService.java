@@ -19,28 +19,28 @@ public class AddressValidatorService {
 
 	/**
 	 * Validate the specified address and return a Resolve object
+	 * 
 	 * @param address
 	 * @return
 	 */
 	public Resolve validateAddress(Address address) {
 		Resolve resolve = new Resolve();
 		try {
-		// Checks for missing fields in the Address objecct 
-		if (!validateAddressFields(address)) 
-			resolve.setStatus(DefaultParas.InsufficientLocationInput);
-		
-		else {
-			
-			JSONObject responseObject = getAddressInformationFromGeocode(address);
-			resolve = validateResponseItems(responseObject);
-			
-		}		
-			
+			// Checks for missing fields in the Address objecct
+			if (!validateAddressFields(address))
+				resolve.setStatus(DefaultParas.InsufficientLocationInput);
+
+			else {
+
+				JSONObject responseObject = getAddressInformationFromGeocode(address);
+				resolve = validateResponseItems(responseObject);
+
+			}
+
 		} catch (Exception e) {
 			resolve.setStatus(DefaultParas.Invalid);
 		}
-		
-		
+
 		return resolve;
 	}
 
@@ -49,38 +49,40 @@ public class AddressValidatorService {
 	 * @param responseObject
 	 * @return
 	 */
-	public Resolve validateResponseItems(JSONObject responseObject) throws Exception{
+	public Resolve validateResponseItems(JSONObject responseObject) throws Exception {
 		Resolve resolve = new Resolve();
+		resolve.setHereUsage(0);
 		// Validate if it return an error
-		if(responseObject.has("error")) {
+		if (responseObject.has("error")) {
 			resolve.setStatus(DefaultParas.Unknown);
-			resolve.setHereUsage(0);
-		}else {
+			
+		} else {
 			JSONArray items = responseObject.getJSONArray("items");
-			if(items.length() <1)
+			if (items.length() < 1)
 				resolve.setStatus(DefaultParas.Invalid);
 			else {
 				JSONObject itemObj = items.getJSONObject(0);
-				itemObj = itemObj.getJSONObject("address");
-				if(!itemObj.has("houseNumber"))
+				JSONObject addressObj = itemObj.getJSONObject("address");
+				String[] notContainOnStreet = { "POBox", "Mailbox", "LockedBag" };
+
+				if (Arrays.stream(notContainOnStreet).anyMatch(addressObj.getString("street")::contains))
 					resolve.setStatus(DefaultParas.Invalid);
-				else {
-					String[] notContainOnStreet = {"POBox", "Mailbox", "LockedBag"};
-					
-				    if (Arrays.stream(notContainOnStreet).anyMatch(itemObj.getString("street")::contains))
-				    	resolve.setStatus(DefaultParas.Invalid);
-				    else if( itemObj.has("houseNumber") && itemObj.has("houseNumber")) {
-				    	resolve.setStatus(DefaultParas.Valid);
-				    	resolve.setNormalized(itemObj.getString("label"));
-				    }else 
-				    	resolve.setStatus(DefaultParas.Invalid);
-				    
-				}
-				
-			}	
-			resolve.setHereUsage(1);
+				else if ((addressObj.has("houseNumber") && addressObj.has("label")) &&
+						 (StringUtils.isNotBlank(addressObj.getString("houseNumber"))) && 
+						 (StringUtils.isNotBlank(addressObj.getString("label")))) {
+
+					resolve.setStatus(DefaultParas.Valid);
+					resolve.setNormalized(addressObj.getString("label"));
+					resolve.setHereUsage(1);
+				} else
+					resolve.setStatus(DefaultParas.Invalid);
+
+			}
+
 		}
+		
 		return resolve;
+
 	}
 
 	/**
