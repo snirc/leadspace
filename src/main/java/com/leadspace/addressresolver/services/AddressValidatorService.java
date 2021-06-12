@@ -1,11 +1,11 @@
 package com.leadspace.addressresolver.services;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.leadspace.addressresolver.DefaultParas;
@@ -14,6 +14,7 @@ import com.leadspace.addressresolver.pojo.Resolve;
 
 import io.micrometer.core.instrument.util.StringUtils;
 
+@Service
 public class AddressValidatorService {
 
 	/**

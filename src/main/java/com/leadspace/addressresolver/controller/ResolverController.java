@@ -1,5 +1,6 @@
 package com.leadspace.addressresolver.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,9 @@ import com.leadspace.addressresolver.services.AddressValidatorService;
  */
 @RestController
 public class ResolverController {
-
+	
+	 @Autowired AddressValidatorService addressValidatorService;
+	 
 	 @RequestMapping("/")
 	    public ResponseEntity<Object> index() {
 	    	return new ResponseEntity<Object>(HttpStatus.OK);
@@ -31,7 +34,6 @@ public class ResolverController {
 	    @PostMapping(value = "/address/resolv", produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody
 	    public Resolve resolvAddress(@RequestBody Address address) throws Exception  {
-	    	AddressValidatorService addressValidatorService = new AddressValidatorService();
 	    	
 	    	return addressValidatorService.validateAddress(address);
 	            
