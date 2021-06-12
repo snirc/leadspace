@@ -7,11 +7,11 @@ Rest API:<br>
 POST localhost:8083/address/resolv<br>
 Examole of bofy row:<br>
 {<br>
-	"country":"France",<br>
-	"city":"Paris",<br>
-	"state": "Île-de-France",<br>
-	"postalCode": "75002", <br>
-	"street": "5 Rue Daunou"<br>
+	&#9"country":"France",<br>
+	&#9"city":"Paris",<br>
+	&#9"state": "Île-de-France",<br>
+	&#9"postalCode": "75002", <br>
+	&#9"street": "5 Rue Daunou"<br>
 	
 }<br>
 <br>
