@@ -5,7 +5,7 @@ To run the application run the class com.leadspace.addressresolver.ResoleverApp 
 By defaulet it will run on port 8080 but you can specified a port in application parameter or if running from consule in the CLI, just need to spcified a port number.
 Rest API:
 POST localhost:8083/address/resolv
-Examole of bofy row:
+Examole of bofy row:<br>
 {
 	"country":"France",
 	"city":"Paris",
